@@ -22,8 +22,8 @@ dotenv = begin
   # https://regex101.com/r/cbm5Tp/1
   dotenv_pattern = /^(?:export\s+|)(?<key>[[:alnum:]_]+)=((?<quote>["'])?(?<val>.*?[^\\])\k<quote>?|)$/
 
-  # find that above node_modules/react-native-config/ios/
-  path = File.join(Dir.pwd, "../../../#{file}")
+  # find file above /ios/Pods/
+  path = File.join(Dir.pwd, "../../#{file}")
   if File.exists?(path)
     raw = File.read(path)
   elsif File.exists?(file)
@@ -62,7 +62,7 @@ template = <<EOF
 EOF
 
 # write it so that ReactNativeConfig.m can return it
-path = File.join(ENV["SYMROOT"], "GeneratedDotEnv.m")
+path = File.join(ENV["PODS_TARGET_SRCROOT"], "ios", "ReactNativeConfig", "GeneratedDotEnv.m")
 File.open(path, "w") { |f| f.puts template }
 
 # create header file with defines for the Info.plist preprocessor

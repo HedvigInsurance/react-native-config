@@ -1,2 +1,12 @@
 .DS_Store
 
+# android
+.classpath
+.project
+.settings/
+build/
+
+# ios
+xcshareddata/
+xcuserdata/
+GeneratedDotEnv.m

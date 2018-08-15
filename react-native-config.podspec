@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = "ios/**/*.{h,m}"
   s.requires_arc = true
+  s.script_phase = { :name => 'Generate DotenvConfig', :script => 'pwd;${PODS_TARGET_SRCROOT}/ios/ReactNativeConfig/BuildDotEnvConfig.ruby', :execution_position => :before_compile }
 
   s.dependency "React"
 end
